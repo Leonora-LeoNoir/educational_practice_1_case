@@ -1,16 +1,16 @@
-from datetime import datetime
+from datetime import date
 import calendar
 
-def get_day_of_week(year, month, day): # Создаем объект даты
-    date_obj = datetime(year, month, day)
-    
-    # weekday() возвращает число от 0 (понедельник) до 6 (воскресенье)
-    days = [
-        "Понедельник", "Вторник", "Среда", 
-        "Четверг", "Пятница", "Суббота", "Воскресенье"
-    ]
-    
-    return days[date_obj.weekday()]
+#функция для определения дня недели
+def get_day_of_week(birth_date):
+    days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    return days[birth_date.weekday()]
+
+#функция для определения возраста
+def calculate_age(birth_date):
+    today = date.today()
+    # Логическое выражение вернет True (1) или False (0), заменяя блок if
+    return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
 
 print('Число вашего рождения (цифрами):') #текст подсказка для пользователя
 day = int(input()) #строка ввода
@@ -19,10 +19,14 @@ month = int(input()) #строка ввода
 print('Год вашего рождения (цифрами):') #текст подсказка для пользователя
 year = int(input()) #строка ввода
 
-print(get_day_of_week(year, month, day))
+user_date = date(year, month, day)
+
+print(get_day_of_week(user_date))
 
 if calendar.isleap(year):
     print('Год високосный.')
 else:
     print('Год не високосный.')
+
+print(f"Вам сейчас: {calculate_age(user_date)} лет")
 
