@@ -28,7 +28,7 @@ def calculate_age(birth_date):
 
 #функция для реализации шрифта *звездочка
 def print_date_block(birth_date):
-    full_date = f"{day:02d}{month:02d}{year:04d}"
+    full_date = f"{birth_date.day:02d}{birth_date.month:02d}{birth_date.year:04d}"
 
     for i in range(5):
         line = ""
@@ -54,6 +54,6 @@ else:
 
 print(f"Вам сейчас: {calculate_age(user_date)} лет")
 
-print(print_date_block(user_date))
+print_date_block(user_date)
 
 
